@@ -20,7 +20,6 @@ public class DatabaseSchema {
         public static final String FECHAULTIMARECARGA = "fechaultimarecarga";
         public static final String FECHAVENCIMIENTO = "fechavencimiento";
         public static final String TAMANIO = "tamanio";
-        public static final String CADUCIDAD_ANIOS = "caducidad_anios";
     }
 
     public static abstract class Camilla implements BaseColumns{
@@ -47,13 +46,12 @@ public class DatabaseSchema {
         public static final String TABLE_NAME = "bloque";
         public static final String LETRA = "letra";
         public static final String NOMBRE = "nombre";
-        public static final String TIPO = "tipo";
+        public static final String ID_SEDE = "id_Sede";
     }
 
     public static abstract class Sede implements BaseColumns{
         public static final String TABLE_NAME = "sede";
-        public static final String LETRA = "letra";
-        public static final String ID_SEDE = "id_sede";
+        public static final String ID = "id";
         public static final String NOMBRE = "nombre";
     }
 
