@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.cest.cest_mobile.Database.CestMovilDB;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SabesElId.class);
+                Intent i = new Intent(MainActivity.this, ConsultarElemento.class);
                 startActivity(i);
             }
         });

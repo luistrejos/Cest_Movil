@@ -3,12 +3,15 @@ package com.cest.cest_mobile.Database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+
 import com.cest.cest_mobile.Database.DatabaseSchema.*;
 
 public class CestMovilDB extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "cest_movil.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "cest_movil.db";
+    private final Context context;
 
     private static final String SQL_CREAR_TABLA_ELEMENTO  = "create table if not exists "
             + Elemento.TABLE_NAME + "("
@@ -25,6 +28,8 @@ public class CestMovilDB extends SQLiteOpenHelper {
             + Extintor.FECHAULTIMARECARGA + " text not null, "
             + Extintor.FECHAVENCIMIENTO + " text not null, "
             + Extintor.TAMANIO + " text not null, "
+            + Extintor.FICHA_TECNICA + " text not null, "
+            + "foreign key ("+Extintor.FICHA_TECNICA+") references "+FichaTecnica.TABLE_NAME+"("+FichaTecnica.TIPO+"),"
             + "foreign key ("+Extintor.ID_ELEMENTO+") references "+Elemento.TABLE_NAME+"("+Elemento.ID+"))";
 
     private static final String SQL_CREAR_TABLA_CAMILLA = "create table if not exists "
@@ -32,7 +37,13 @@ public class CestMovilDB extends SQLiteOpenHelper {
             + Camilla.ID +" integer primary key, "
             + Camilla.ID_ELEMENTO + " integer not null, "
             + Camilla.TIPO + " text not null, "
+
             + "foreign key ("+Camilla.ID_ELEMENTO+") references "+Elemento.TABLE_NAME+"("+Elemento.ID+"))";
+
+    private static final String SQL_CREAR_TABLA_FICHATECNICA = "create table if not exists "
+            + FichaTecnica.TABLE_NAME +"("
+            + FichaTecnica.TIPO +" text primary key, "
+            + FichaTecnica.DESCRIPCION + " text not null)";
 
     private static final String SQL_CREAR_TABLA_REPORTE = "create table if not exists "
             + Reporte.TABLE_NAME +"("
@@ -67,27 +78,44 @@ public class CestMovilDB extends SQLiteOpenHelper {
 
     public CestMovilDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                db.setForeignKeyConstraintsEnabled(true);
+            } else {
+                db.execSQL("PRAGMA foreign_keys=ON");
+            }
+        }
+    }
+
+    @Override
     public void onCreate(SQLiteDatabase db){
+        db.execSQL(SQL_CREAR_TABLA_PISO);
+        db.execSQL(SQL_CREAR_TABLA_BLOQUE);
+        db.execSQL(SQL_CREAR_TABLA_SEDE);
+        db.execSQL(SQL_CREAR_TABLA_REPORTE);
+        db.execSQL(SQL_CREAR_TABLA_CAMILLA);
+        db.execSQL(SQL_CREAR_TABLA_EXTINTOR);
+        db.execSQL(SQL_CREAR_TABLA_FICHATECNICA);
+        db.execSQL(SQL_CREAR_TABLA_ELEMENTO);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL("drop table if exists "+Piso.TABLE_NAME);
         db.execSQL("drop table if exists "+Bloque.TABLE_NAME);
         db.execSQL("drop table if exists "+Sede.TABLE_NAME);
         db.execSQL("drop table if exists "+Reporte.TABLE_NAME);
         db.execSQL("drop table if exists "+Camilla.TABLE_NAME);
+        db.execSQL("drop table if exists "+FichaTecnica.TABLE_NAME);
         db.execSQL("drop table if exists "+Extintor.TABLE_NAME);
         db.execSQL("drop table if exists "+Elemento.TABLE_NAME);
-        db.execSQL(SQL_CREAR_TABLA_ELEMENTO);
-        db.execSQL(SQL_CREAR_TABLA_EXTINTOR);
-        db.execSQL(SQL_CREAR_TABLA_CAMILLA);
-        db.execSQL(SQL_CREAR_TABLA_REPORTE);
-        db.execSQL(SQL_CREAR_TABLA_SEDE);
-        db.execSQL(SQL_CREAR_TABLA_BLOQUE);
-        db.execSQL(SQL_CREAR_TABLA_PISO);
-    }
-
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-
+        onCreate(db);
     }
 
 }
