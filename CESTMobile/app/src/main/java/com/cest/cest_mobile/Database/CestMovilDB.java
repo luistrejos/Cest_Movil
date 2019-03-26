@@ -1,8 +1,6 @@
 package com.cest.cest_mobile.Database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.cest.cest_mobile.Database.DatabaseSchema.*;
@@ -72,7 +70,6 @@ public class CestMovilDB extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db){
-
         db.execSQL(SQL_CREAR_TABLA_ELEMENTO);
         db.execSQL(SQL_CREAR_TABLA_EXTINTOR);
         db.execSQL(SQL_CREAR_TABLA_CAMILLA);
@@ -85,7 +82,5 @@ public class CestMovilDB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
 
     }
-
-
 
 }
