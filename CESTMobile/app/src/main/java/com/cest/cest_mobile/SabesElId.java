@@ -15,7 +15,7 @@ public class SabesElId extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sabes_el_id);
+        setContentView(R.layout.activity_consultar_elemento);
 
     }
 
@@ -25,8 +25,6 @@ public class SabesElId extends AppCompatActivity {
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ElementoController controller = new ElementoController();
-                controller.buscarID(id);
             }
         });
     }

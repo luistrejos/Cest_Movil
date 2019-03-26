@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btnId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SabesElId.class);
+                Intent i = new Intent(MainActivity.this, ConsultarElemento.class);
                 startActivity(i);
             }
         });
