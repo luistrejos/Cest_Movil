@@ -20,6 +20,7 @@ public class DatabaseSchema {
         public static final String FECHAULTIMARECARGA = "fechaultimarecarga";
         public static final String FECHAVENCIMIENTO = "fechavencimiento";
         public static final String TAMANIO = "tamanio";
+        public static final String FICHA_TECNICA = "ficha_tecnica";
     }
 
     public static abstract class Camilla implements BaseColumns{
@@ -27,6 +28,13 @@ public class DatabaseSchema {
         public static final String ID = "id";
         public static final String ID_ELEMENTO = "id_elemento";
         public static final String TIPO = "tipo";
+
+    }
+
+    public static abstract class FichaTecnica implements BaseColumns{
+        public static final String TABLE_NAME = "fichatecnica";
+        public static final String TIPO = "tipo";
+        public static final String DESCRIPCION = "descripcion";
     }
 
     public static abstract class Reporte implements BaseColumns{
