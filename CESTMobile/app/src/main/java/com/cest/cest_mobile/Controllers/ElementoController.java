@@ -40,14 +40,18 @@ public class ElementoController {
                null,
                null,
                null);
+
         if (cursor != null)
             cursor.moveToFirst();
 
         int n = cursor.getColumnCount();
         String[] infoElemento = new String[n];
-        String[] columnas = cursor.getColumnNames();
         for (int i = 0; i < n; i++) {
-            infoElemento[i] = cursor.getString(i);
+            try{
+                infoElemento[i] = cursor.getString(i);
+            }catch (Exception e){
+                return null;
+            }
         }
         db.close();
         return infoElemento;

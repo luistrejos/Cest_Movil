@@ -47,7 +47,11 @@ public class ConsultarElemento extends AppCompatActivity {
                     if(id.length() < 6){
                         //Llamar a elemento controller
                         String[] infoElemento = elmtCtrl.buscarId(id);
-                        Log.d("APP: ", Arrays.toString(infoElemento));
+                        if(infoElemento != null){
+                            Log.d("APP: ", Arrays.toString(infoElemento));
+                        }else{
+                            Toast.makeText(v.getContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();
+                        }
                     }else{
                         Toast.makeText(v.getContext(), "El ID tiene más de 5 dígitos", Toast.LENGTH_LONG).show();
                     }
