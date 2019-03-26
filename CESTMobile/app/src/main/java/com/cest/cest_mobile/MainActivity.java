@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CestMovilDB db = new CestMovilDB(this.getApplicationContext());
-        //db.Create("Luis Trejos");
-        //Toast.makeText(this, "Hey", Toast.LENGTH_LONG).show();
 
         btnId = (Button) findViewById(R.id.btnId);
         btnId.setOnClickListener(new View.OnClickListener() {

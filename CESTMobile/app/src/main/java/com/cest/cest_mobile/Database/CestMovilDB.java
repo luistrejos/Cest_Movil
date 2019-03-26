@@ -70,6 +70,13 @@ public class CestMovilDB extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db){
+        db.execSQL("drop table if exists "+Piso.TABLE_NAME);
+        db.execSQL("drop table if exists "+Bloque.TABLE_NAME);
+        db.execSQL("drop table if exists "+Sede.TABLE_NAME);
+        db.execSQL("drop table if exists "+Reporte.TABLE_NAME);
+        db.execSQL("drop table if exists "+Camilla.TABLE_NAME);
+        db.execSQL("drop table if exists "+Extintor.TABLE_NAME);
+        db.execSQL("drop table if exists "+Elemento.TABLE_NAME);
         db.execSQL(SQL_CREAR_TABLA_ELEMENTO);
         db.execSQL(SQL_CREAR_TABLA_EXTINTOR);
         db.execSQL(SQL_CREAR_TABLA_CAMILLA);
