@@ -1,11 +1,12 @@
 package com.cest.cest_mobile;
 
-import android.support.design.widget.TextInputEditText;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cest.cest_mobile.Controllers.ElementoController;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 public class ConsultarElemento extends AppCompatActivity {
 
     private Button btnConsultar;
-    private TextInputEditText txtId;
+    private EditText txtId;
     private ElementoController elmtCtrl;
     private CestMovilDB db;
 
@@ -25,7 +26,7 @@ public class ConsultarElemento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_elemento);
         btnConsultar = (Button) findViewById(R.id.btnConsultar);
-        txtId = (TextInputEditText) findViewById(R.id.txtId);
+        txtId = (EditText) findViewById(R.id.txtId);
         db = new CestMovilDB(this.getApplicationContext());
         //db.getWritableDatabase().execSQL("drop table if exists elemento");
         //db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, letra_bloque text not null, tipo text not null)");
