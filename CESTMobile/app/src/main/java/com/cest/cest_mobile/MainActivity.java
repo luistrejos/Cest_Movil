@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.cest.cest_mobile.Controller.LecturaCodigo;
+import com.cest.cest_mobile.Database.CestMovilDB;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -63,6 +65,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 
 }
