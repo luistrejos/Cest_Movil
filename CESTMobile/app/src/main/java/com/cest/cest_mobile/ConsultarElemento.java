@@ -29,6 +29,7 @@ public class ConsultarElemento extends AppCompatActivity {
         db = new CestMovilDB(this.getApplicationContext());
         //db.getWritableDatabase().execSQL("drop table if exists elemento");
         //db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, letra_bloque text not null, tipo text not null)");
+
         elmtCtrl = new ElementoController(db);
 
 
