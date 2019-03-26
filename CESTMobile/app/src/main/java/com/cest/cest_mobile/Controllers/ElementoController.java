@@ -24,4 +24,8 @@ public class ElementoController {
         db.insert(Elemento.TABLE_NAME, null,values);
         db.close();
     }
+
+    public void buscarPorId(){
+
+    }
 }
