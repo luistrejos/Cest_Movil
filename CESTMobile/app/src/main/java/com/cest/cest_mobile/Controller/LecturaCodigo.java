@@ -1,42 +1,38 @@
-package com.cest.cest_mobile;
+package com.cest.cest_mobile.Controller;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import com.cest.cest_mobile.Controller.LecturaCodigo;
-import com.cest.cest_mobile.Database.CestMovilDB;
+import com.cest.cest_mobile.MainActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class MainActivity extends AppCompatActivity {
+public class LecturaCodigo extends Activity {
 
-    //variables
+    IntentIntegrator scaner;
+    String resultScan;
+
+
+    public void LecturaCodigo(Activity intent){
+        this.scaner = new IntentIntegrator(intent);
+        this.scaner.setBeepEnabled(false);
+        this.resultScan = "";
+    }
+
+    public String leerCodiog(){
+        this.scaner.initiateScan();
+        return this.resultScan;
+    }
+
+
     /**
-     * Está variable almacena el string
-     * que se lea del código QR
+     * Metodo que realiza la lectura del codigo QR
+     * @param requestCode
+     * @param resultCode
+     * @param data
      */
-    String resultScan = "";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        CestMovilDB db = new CestMovilDB(this.getApplicationContext());
-        //db.Create("Luis Trejos");
-        //Toast.makeText(this, db.Read(3), Toast.LENGTH_LONG).show();
-    }
-
-    public void escanear(View view) {
-
-        IntentIntegrator scaner = new IntentIntegrator(this);
-        scaner.initiateScan();
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if ( resultCode == Activity.RESULT_OK){
