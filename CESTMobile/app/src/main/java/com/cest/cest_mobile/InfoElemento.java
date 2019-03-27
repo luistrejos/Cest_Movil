@@ -44,7 +44,7 @@ public class InfoElemento extends AppCompatActivity {
         }
     }
 
-    public Dialog onCreateDialog(Bundle savedInstanceState){
+    /*public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getParent());
         // Get the layout inflater
         LayoutInflater inflater = getParent().getLayoutInflater();
@@ -66,5 +66,5 @@ public class InfoElemento extends AppCompatActivity {
                 });
         return builder.create();
 
-    }
+    }*/
 }
