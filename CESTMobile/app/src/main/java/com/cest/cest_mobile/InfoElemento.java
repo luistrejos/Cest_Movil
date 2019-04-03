@@ -1,14 +1,10 @@
 package com.cest.cest_mobile;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.textclassifier.TextClassification;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
