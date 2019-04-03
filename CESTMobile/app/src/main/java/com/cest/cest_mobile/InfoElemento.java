@@ -7,9 +7,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.textclassifier.TextClassification;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InfoElemento extends AppCompatActivity {
 
@@ -19,11 +22,19 @@ public class InfoElemento extends AppCompatActivity {
     private TextView txtId;
     private TextView txtDescripcion;
     private ImageView imgElemento;
+    private Button btnUbicado;
+    private Button btnUso;
+    private Button btnDano;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_elemento);
+
+        this.btnUbicado = (Button) findViewById(R.id.btnUbicado);
+        this.btnDano = (Button) findViewById(R.id.btnDano);
+        this.btnUso = (Button) findViewById(R.id.btnUso);
+
         this.id = getIntent().getStringExtra("id");
         this.tipo = getIntent().getStringExtra("tipo");
         this.letra_bloque = getIntent().getStringExtra("letra_bloque");
@@ -42,29 +53,40 @@ public class InfoElemento extends AppCompatActivity {
         }else{
             this.imgElemento.setImageResource(R.drawable.camilla);
         }
+
+
+        /**
+         * Evento para el botón de reportar si el elemento consultado se encuentra en su sitio
+         */
+        this.btnUbicado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createSimpleDialog(v);
+            }
+        });
     }
 
-    /*public Dialog onCreateDialog(Bundle savedInstanceState){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getParent());
-        // Get the layout inflater
-        LayoutInflater inflater = getParent().getLayoutInflater();
+    public AlertDialog createSimpleDialog(View v) {
+        Toast.makeText(v.getContext(),"Alert", Toast.LENGTH_LONG).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.reportar_sitio, null))
-                // Add action buttons
-                .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        // sign in the user ...
-                    }
-                })
-                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        InfoElemento.this.getDialog().cancel();
-                    }
-                });
+        builder.setTitle("Titulo")
+                .setMessage("El Mensaje para el usuario")
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //listener.onPossitiveButtonClick();
+                            }
+                        })
+                .setNegativeButton("CANCELAR",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //listener.onNegativeButtonClick();
+                            }
+                        });
+
         return builder.create();
-
-    }*/
+    }
 }

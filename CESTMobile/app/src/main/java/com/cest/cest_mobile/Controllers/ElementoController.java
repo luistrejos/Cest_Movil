@@ -3,7 +3,6 @@ package com.cest.cest_mobile.Controllers;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.cest.cest_mobile.Database.CestMovilDB;
 import com.cest.cest_mobile.Database.DatabaseSchema.Elemento;
@@ -16,7 +15,12 @@ public class ElementoController {
         this.db = db;
     }
 
-    /*Método para crear un registro en la case de datos*/
+    /**
+     * Método para insertar un elemento en la base de datos
+     * @param id Identificador del elemento
+     * @param tipo Tipo de elemento
+     * @param letra_bloque Letra del bloque donde está ubicado el elemento
+     */
     public void Crear (String id, String tipo, String letra_bloque){
         SQLiteDatabase db = this.db.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -27,7 +31,11 @@ public class ElementoController {
         db.close();
     }
 
-    /*Método para leer un registro de la base de datos*/
+    /**
+     * Método para buscar un elemento en la base de datos
+     * @param id Identificador del elemento a buscar
+     * @return Arreglo de Strings con la información del elemento
+     */
     public String[] buscarId (String id){
         SQLiteDatabase db = this.db.getReadableDatabase();
         String[] projection = {Elemento.ID, Elemento.TIPO, Elemento.LETRA_BLOQUE};

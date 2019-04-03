@@ -27,6 +27,7 @@ public class ConsultarElemento extends AppCompatActivity {
         setContentView(R.layout.activity_consultar_elemento);
         btnConsultar = (Button) findViewById(R.id.btnConsultar);
         txtId = (EditText) findViewById(R.id.txtId);
+        boolean bandera = getIntent().getBooleanExtra("bandera", false);
         CestMovilDB db = new CestMovilDB(this.getApplicationContext());
         //db.getWritableDatabase().execSQL("drop table if exists elemento");
         //db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, letra_bloque text not null, tipo text not null)");
@@ -34,7 +35,14 @@ public class ConsultarElemento extends AppCompatActivity {
         elmtCtrl = new ElementoController(db);
 
 
-        //elmtCtrl.Crear("2","Camilla","A");
+        if(bandera){
+            BuscarElemento(getIntent().getStringExtra("id"));
+        }
+
+        //elmtCtrl.Crear("1","Camilla","A");
+        //elmtCtrl.Crear("2","Camilla","B");
+        //elmtCtrl.Crear("3","Extintor","C");
+        //elmtCtrl.Crear("4","Extintor","D");
 
         /**
          * Evento del botón para buscar elemento por ID
@@ -47,17 +55,7 @@ public class ConsultarElemento extends AppCompatActivity {
                     Log.d("APPP: ",id);
                     if(id.length() < 6){
                         //Llamar a elemento controller
-                        String[] infoElemento = elmtCtrl.buscarId(id);
-                        if(infoElemento != null){
-                            Log.d("APP: ", Arrays.toString(infoElemento));
-                            Intent i = new Intent(ConsultarElemento.this, InfoElemento.class);
-                            i.putExtra("id",infoElemento[0]);
-                            i.putExtra("tipo",infoElemento[1]);
-                            i.putExtra("letra_bloque",infoElemento[2]);
-                            startActivity(i);
-                        }else{
-                            Toast.makeText(v.getContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();
-                        }
+                        BuscarElemento(id);
                     }else{
                         Toast.makeText(v.getContext(), "El ID tiene más de 5 dígitos", Toast.LENGTH_LONG).show();
                     }
@@ -68,5 +66,22 @@ public class ConsultarElemento extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método que invoca la vista con la información del elememento a consultar
+     * @param id Identificador del elemento a consultar
+     */
+    private void BuscarElemento(String id){
+        String[] infoElemento = elmtCtrl.buscarId(id);
+        if(infoElemento != null){
+            Log.d("APP: ", Arrays.toString(infoElemento));
+            Intent i = new Intent(ConsultarElemento.this, InfoElemento.class);
+            i.putExtra("id",infoElemento[0]);
+            i.putExtra("tipo",infoElemento[1]);
+            i.putExtra("letra_bloque",infoElemento[2]);
+            startActivity(i);
+        }else{
+            Toast.makeText(getApplicationContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();
+        }
+    }
 
 }

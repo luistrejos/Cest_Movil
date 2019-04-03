@@ -6,10 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.cest.cest_mobile.Controllers.QRController;
 import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,32 +34,25 @@ public class MainActivity extends AppCompatActivity {
         btnEscanear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                escanear(v);
+                //escanear(v);
+                IntentIntegrator scaner = new IntentIntegrator(MainActivity.this);
+                //scaner.setBeepEnabled(false);
+                scaner.initiateScan();
             }
         });
 
     }
 
     public void escanear(View view) {
-
         IntentIntegrator scaner = new IntentIntegrator(this);
+        //scaner.setBeepEnabled(false);
         scaner.initiateScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if ( resultCode == MainActivity.RESULT_OK){
-            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-            if(result != null) {
-                if(result.getContents() == null) {
-                    Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                    this.resultScan = result.toString();
-                }
-            } else {
-                super.onActivityResult(requestCode, resultCode, data);
-            }
+            new QRController().LeerQR(this.getApplicationContext(),requestCode,resultCode,data);
         }
     }
 
