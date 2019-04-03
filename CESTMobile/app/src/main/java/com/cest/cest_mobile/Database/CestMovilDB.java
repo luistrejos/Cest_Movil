@@ -11,7 +11,6 @@ public class CestMovilDB extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "cest_movil.db";
-    private final Context context;
 
     private static final String SQL_CREAR_TABLA_ELEMENTO  = "create table if not exists "
             + Elemento.TABLE_NAME + "("
@@ -78,7 +77,6 @@ public class CestMovilDB extends SQLiteOpenHelper {
 
     public CestMovilDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
     }
 
     @Override

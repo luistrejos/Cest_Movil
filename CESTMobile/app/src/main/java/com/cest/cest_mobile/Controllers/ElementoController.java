@@ -36,7 +36,7 @@ public class ElementoController {
      * @param id Identificador del elemento a buscar
      * @return Arreglo de Strings con la información del elemento
      */
-    public String[] buscarId (String id){
+    public String[] BuscarId (String id){
         SQLiteDatabase db = this.db.getReadableDatabase();
         String[] projection = {Elemento.ID, Elemento.TIPO, Elemento.LETRA_BLOQUE};
 

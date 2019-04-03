@@ -36,6 +36,7 @@ public class ConsultarElemento extends AppCompatActivity {
 
 
         if(bandera){
+            Log.i("APP","QR ID: "+getIntent().getStringExtra("id"));
             BuscarElemento(getIntent().getStringExtra("id"));
         }
 
@@ -52,7 +53,7 @@ public class ConsultarElemento extends AppCompatActivity {
             public void onClick(View v) {
                 if (!txtId.getText().toString().isEmpty()){
                     String id = txtId.getText().toString();
-                    Log.d("APPP: ",id);
+                    Log.i("APP: ",id);
                     if(id.length() < 6){
                         //Llamar a elemento controller
                         BuscarElemento(id);
@@ -71,7 +72,7 @@ public class ConsultarElemento extends AppCompatActivity {
      * @param id Identificador del elemento a consultar
      */
     private void BuscarElemento(String id){
-        String[] infoElemento = elmtCtrl.buscarId(id);
+        String[] infoElemento = elmtCtrl.BuscarId(id);
         if(infoElemento != null){
             Log.d("APP: ", Arrays.toString(infoElemento));
             Intent i = new Intent(ConsultarElemento.this, InfoElemento.class);

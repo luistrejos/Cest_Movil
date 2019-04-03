@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnId;
     private Button btnEscanear;
-    private String resultScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btnId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("APP","Consulta ID");
                 Intent i = new Intent(MainActivity.this, ConsultarElemento.class);
                 startActivity(i);
             }
@@ -34,25 +35,23 @@ public class MainActivity extends AppCompatActivity {
         btnEscanear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //escanear(v);
                 IntentIntegrator scaner = new IntentIntegrator(MainActivity.this);
                 //scaner.setBeepEnabled(false);
                 scaner.initiateScan();
+                Log.i("APP","Escaneo iniciado");
             }
         });
 
     }
 
-    public void escanear(View view) {
-        IntentIntegrator scaner = new IntentIntegrator(this);
-        //scaner.setBeepEnabled(false);
-        scaner.initiateScan();
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.i("APP","Resultado escaneo");
+        Log.i("APP","resultCode: "+resultCode);
+        Log.i("APP","MainActivity: "+MainActivity.RESULT_OK);
         if ( resultCode == MainActivity.RESULT_OK){
-            new QRController().LeerQR(this.getApplicationContext(),requestCode,resultCode,data);
+            Log.i("APP","OK");
+            new QRController().LeerQR(MainActivity.this,requestCode,resultCode,data);
         }
     }
 
