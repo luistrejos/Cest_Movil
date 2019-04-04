@@ -14,7 +14,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnId;
-    private Button btnEscanear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,29 +29,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        btnEscanear = (Button) findViewById(R.id.btnEscanear);
-        btnEscanear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentIntegrator scaner = new IntentIntegrator(MainActivity.this);
-                //scaner.setBeepEnabled(false);
-                scaner.initiateScan();
-                Log.i("APP","Escaneo iniciado");
-            }
-        });
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.i("APP","Resultado escaneo");
-        Log.i("APP","resultCode: "+resultCode);
-        Log.i("APP","MainActivity: "+MainActivity.RESULT_OK);
-        if ( resultCode == MainActivity.RESULT_OK){
-            Log.i("APP","OK");
-            new QRController().LeerQR(MainActivity.this,requestCode,resultCode,data);
-        }
     }
 
 }

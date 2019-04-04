@@ -2,6 +2,7 @@ package com.cest.cest_mobile;
 
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,13 +12,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cest.cest_mobile.Controllers.ElementoController;
+import com.cest.cest_mobile.Controllers.QRController;
 import com.cest.cest_mobile.Database.CestMovilDB;
+import com.google.zxing.integration.android.IntentIntegrator;
 
 import java.util.Arrays;
 
 public class ConsultarElemento extends AppCompatActivity {
 
     private Button btnConsultar;
+    private Button btnQR;
     private EditText txtId;
     private ElementoController elmtCtrl;
 
@@ -26,6 +30,7 @@ public class ConsultarElemento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_elemento);
         btnConsultar = (Button) findViewById(R.id.btnConsultar);
+        btnQR = (Button) findViewById(R.id.btnQR);
         txtId = (EditText) findViewById(R.id.txtId);
         boolean bandera = getIntent().getBooleanExtra("bandera", false);
         CestMovilDB db = new CestMovilDB(this.getApplicationContext());
@@ -45,9 +50,6 @@ public class ConsultarElemento extends AppCompatActivity {
         elmtCtrl.Crear("3","Extintor","C");
         elmtCtrl.Crear("4","Extintor","D");
 
-        /**
-         * Evento del botón para buscar elemento por ID
-         */
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +67,27 @@ public class ConsultarElemento extends AppCompatActivity {
                 }
             }
         });
+
+        btnQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator scaner = new IntentIntegrator(ConsultarElemento.this);
+                //scaner.setBeepEnabled(false);
+                scaner.initiateScan();
+                Log.i("APP","Escaneo iniciado");
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.i("APP","Resultado escaneo");
+        Log.i("APP","resultCode: "+resultCode);
+        Log.i("APP","MainActivity: "+MainActivity.RESULT_OK);
+        if ( resultCode == MainActivity.RESULT_OK){
+            Log.i("APP","OK");
+            new QRController().LeerQR(ConsultarElemento.this,requestCode,resultCode,data);
+        }
     }
 
     /**

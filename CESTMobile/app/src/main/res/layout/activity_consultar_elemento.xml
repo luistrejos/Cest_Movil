@@ -56,7 +56,7 @@
 
     <Button
         android:id="@+id/btnConsultar"
-        android:layout_width="92dp"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
@@ -65,8 +65,24 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Consultar"
         android:background="@drawable/boton_redondo"
+        android:text="Consultar por ID"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnQR"
+        android:layout_width="216dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/boton_redondo"
+        android:text="Consultar por Código QR"
         android:textColor="@android:color/background_light"
         android:textStyle="bold" />
 </LinearLayout>
