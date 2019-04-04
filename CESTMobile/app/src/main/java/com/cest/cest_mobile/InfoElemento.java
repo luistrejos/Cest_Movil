@@ -1,9 +1,14 @@
 package com.cest.cest_mobile;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.textclassifier.TextClassification;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InfoElemento extends AppCompatActivity {
 
@@ -12,16 +17,72 @@ public class InfoElemento extends AppCompatActivity {
     private String letra_bloque;
     private TextView txtId;
     private TextView txtDescripcion;
+    private ImageView imgElemento;
+    private Button btnUbicado;
+    private Button btnUso;
+    private Button btnDano;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_elemento);
+
+        this.btnUbicado = (Button) findViewById(R.id.btnUbicado);
+        this.btnDano = (Button) findViewById(R.id.btnDano);
+        this.btnUso = (Button) findViewById(R.id.btnUso);
+
+        this.id = getIntent().getStringExtra("id");
+        this.tipo = getIntent().getStringExtra("tipo");
+        this.letra_bloque = getIntent().getStringExtra("letra_bloque");
+
+
         this.txtId = (TextView) findViewById(R.id.txtIdd);
-        this.txtId.setText(getIntent().getStringExtra("id"));
+        this.txtId.setText(this.id);
 
         this.txtDescripcion = (TextView) findViewById(R.id.txtDescripcion);
-        this.txtDescripcion.setText("Este "+getIntent().getStringExtra("tipo")
-                +" se encuentra ubicado en el bloque "+getIntent().getStringExtra("letra_bloque"));
+        this.txtDescripcion.setText("Este/a "+this.tipo
+                +" se encuentra ubicado en el bloque "+this.letra_bloque);
+
+        this.imgElemento = (ImageView) findViewById(R.id.imgElemento);
+        if(this.tipo.equalsIgnoreCase("extintor")){
+            this.imgElemento.setImageResource(R.drawable.extintor);
+        }else{
+            this.imgElemento.setImageResource(R.drawable.camilla);
+        }
+
+
+        /**
+         * Evento para el botón de reportar si el elemento consultado se encuentra en su sitio
+         */
+        this.btnUbicado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createSimpleDialog(v);
+            }
+        });
+    }
+
+    public AlertDialog createSimpleDialog(View v) {
+        Toast.makeText(v.getContext(),"Alert", Toast.LENGTH_LONG).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Titulo")
+                .setMessage("El Mensaje para el usuario")
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //listener.onPossitiveButtonClick();
+                            }
+                        })
+                .setNegativeButton("CANCELAR",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //listener.onNegativeButtonClick();
+                            }
+                        });
+
+        return builder.create();
     }
 }
