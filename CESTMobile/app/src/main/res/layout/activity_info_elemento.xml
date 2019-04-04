@@ -40,22 +40,22 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
-        android:text="El elelemento #"
+        android:text="Elemento ID: "
         android:textAllCaps="false"
-        android:textColor="@android:color/background_dark"/>
+        android:textColor="@android:color/background_dark" />
 
     <TextView
         android:id="@+id/txtIdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="205dp"
         android:layout_marginTop="100dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="###"
         android:textAllCaps="false"
-        android:textColor="@android:color/background_dark"/>
+        android:textColor="@android:color/background_dark" />
 
     <TextView
         android:id="@+id/txtDescripcion"
@@ -65,7 +65,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="50dp"
-        android:gravity="center"
+        android:gravity="left"
         android:text="Descripción"
         android:textAllCaps="false"
         android:textColor="@android:color/background_dark"/>

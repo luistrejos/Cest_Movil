@@ -40,8 +40,16 @@ public class InfoElemento extends AppCompatActivity {
         this.txtId.setText(this.id);
 
         this.txtDescripcion = (TextView) findViewById(R.id.txtDescripcion);
-        this.txtDescripcion.setText("Este/a "+this.tipo
-                +" se encuentra ubicado en el bloque "+this.letra_bloque);
+        if (tipo.equalsIgnoreCase("extintor")){
+
+            this.txtDescripcion.setText("Es un "+this.tipo
+                    +" y se encuentra ubicado en el bloque "+this.letra_bloque);
+        }
+        else if (tipo.equalsIgnoreCase("camilla")){
+            this.txtDescripcion.setText("Es una "+this.tipo
+                    +" y se encuentra ubicada en el bloque "+this.letra_bloque);
+        }
+
 
         this.imgElemento = (ImageView) findViewById(R.id.imgElemento);
         if(this.tipo.equalsIgnoreCase("extintor")){
