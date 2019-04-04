@@ -107,5 +107,6 @@ public class ConsultarElemento extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();
         }
         finish();
+        Log.i("ms", "hola");
     }
 }
