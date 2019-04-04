@@ -34,7 +34,7 @@ public class ConsultarElemento extends AppCompatActivity {
         elmtCtrl = new ElementoController(db);
 
 
-        //elmtCtrl.Crear("2","Camilla","A");
+        elmtCtrl.Crear("2","Camilla","A");
 
         /**
          * Evento del botón para buscar elemento por ID

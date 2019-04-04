@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public void escanear(View view) {
 
         IntentIntegrator scaner = new IntentIntegrator(this);
+
         scaner.initiateScan();
     }
 
