@@ -44,16 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
-    public void escanear(View view) {
-
-        IntentIntegrator scaner = new IntentIntegrator(this);
-
-        scaner.initiateScan();
-    }
-
-=======
->>>>>>> 4f7c1f559b5957832424fec7784f8cc168ea0586
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Log.i("APP","Resultado escaneo");
