@@ -27,7 +27,11 @@ public class ElementoController {
         values.put(Elemento.ID, Integer.valueOf(id));
         values.put(Elemento.TIPO, tipo);
         values.put(Elemento.LETRA_BLOQUE, letra_bloque);
-        db.insert(Elemento.TABLE_NAME, null,values);
+        try{
+            db.insert(Elemento.TABLE_NAME, null,values);
+        }catch (Exception e){
+
+        }
         db.close();
     }
 
