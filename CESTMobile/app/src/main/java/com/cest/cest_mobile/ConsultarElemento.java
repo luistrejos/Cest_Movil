@@ -34,7 +34,6 @@ public class ConsultarElemento extends AppCompatActivity {
 
         elmtCtrl = new ElementoController(db);
 
-        elmtCtrl.Crear("2","Camilla","A");
 
         if(bandera){
             Log.i("APP","QR ID: "+getIntent().getStringExtra("id"));
@@ -45,7 +44,6 @@ public class ConsultarElemento extends AppCompatActivity {
         elmtCtrl.Crear("2","Camilla","B");
         elmtCtrl.Crear("3","Extintor","C");
         elmtCtrl.Crear("4","Extintor","D");
-
 
         /**
          * Evento del botón para buscar elemento por ID
