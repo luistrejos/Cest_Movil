@@ -12,9 +12,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class QRController {
 
-    public void LeerQR(Context context, int requestCode, int resultCode, @Nullable Intent data){
+    public String LeerQR(Context context, int requestCode, int resultCode, @Nullable Intent data){
         Log.i("APP","Leyendo QR");
-        String resultScan;
+        String resultScan = "";
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if(result.getContents() == null) {
@@ -34,6 +34,7 @@ public class QRController {
 
             }
         }
+        return resultScan;
     }
 
 }

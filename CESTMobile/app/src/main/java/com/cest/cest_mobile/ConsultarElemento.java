@@ -32,18 +32,11 @@ public class ConsultarElemento extends AppCompatActivity {
         btnConsultar = (Button) findViewById(R.id.btnConsultar);
         btnQR = (Button) findViewById(R.id.btnQR);
         txtId = (EditText) findViewById(R.id.txtId);
-        boolean bandera = getIntent().getBooleanExtra("bandera", false);
         CestMovilDB db = new CestMovilDB(this.getApplicationContext());
         //db.getWritableDatabase().execSQL("drop table if exists elemento");
         //db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, letra_bloque text not null, tipo text not null)");
 
         elmtCtrl = new ElementoController(db);
-
-
-        if(bandera){
-            Log.i("APP","QR ID: "+getIntent().getStringExtra("id"));
-            BuscarElemento(getIntent().getStringExtra("id"));
-        }
 
         elmtCtrl.Crear("1","Camilla","A");
         elmtCtrl.Crear("2","Camilla","B");
@@ -79,6 +72,9 @@ public class ConsultarElemento extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método que activa la cámara para escanear el código QR
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Log.i("APP","Resultado escaneo");
@@ -86,7 +82,8 @@ public class ConsultarElemento extends AppCompatActivity {
         Log.i("APP","MainActivity: "+MainActivity.RESULT_OK);
         if ( resultCode == MainActivity.RESULT_OK){
             Log.i("APP","OK");
-            new QRController().LeerQR(ConsultarElemento.this,requestCode,resultCode,data);
+            String id = new QRController().LeerQR(ConsultarElemento.this,requestCode,resultCode,data);
+            BuscarElemento(id);
         }
     }
 
@@ -107,6 +104,5 @@ public class ConsultarElemento extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();
         }
         finish();
-        Log.i("ms", "hola");
     }
 }
