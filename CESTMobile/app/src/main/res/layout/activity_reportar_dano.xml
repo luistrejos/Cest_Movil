@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GenerarReporte">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/boton_redondo"
+        android:text="Reportar Daño"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="9dp" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Que daño presenta el elemento?"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/ckbVencido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vencido" />
+
+    <CheckBox
+        android:id="@+id/ckbDefectuoso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Defectuoso" />
+
+    <CheckBox
+        android:id="@+id/ckbRoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Roto" />
+
+    <CheckBox
+        android:id="@+id/ckbSCorreas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sin correas" />
+
+    <CheckBox
+        android:id="@+id/ckbSAlmoadilla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sin almoadilla" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_redondo"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="30dp"
+        android:text="Enviar Reporte"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="9dp"/>
+
+
+
+
+</LinearLayout>
