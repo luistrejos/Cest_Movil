@@ -21,11 +21,17 @@ public class QRController {
                 Toast.makeText(context, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 resultScan = result.getContents();
-                Toast.makeText(context, "Código escaneado: " + resultScan, Toast.LENGTH_LONG).show();
-                Intent i = new Intent(context, ConsultarElemento.class);
-                i.putExtra("id",resultScan);
-                i.putExtra("bandera", true);
-                context.startActivity(i);
+                try {
+                    int idEscaneado = Integer.parseInt(resultScan.toString());
+                    //Toast.makeText(context, "Código escaneado: " + resultScan, Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(context, ConsultarElemento.class);
+                    i.putExtra("id",resultScan);
+                    i.putExtra("bandera", true);
+                    context.startActivity(i);
+                } catch (Exception e) {
+                    Toast.makeText(context, "El ID no es un número", Toast.LENGTH_LONG).show();
+                }
+
             }
         }
         return resultScan;

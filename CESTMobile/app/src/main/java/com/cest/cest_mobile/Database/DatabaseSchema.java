@@ -9,6 +9,9 @@ public class DatabaseSchema {
         public static final String ID = "id";
         public static final String TIPO = "tipo";
         public static final String LETRA_BLOQUE = "letra_bloque";
+        public static final String NOMBRE_BLOQUE = "nombre_bloque";
+        public static final String PISO = "piso";
+        public static final String SEDE = "sede";
     }
 
     public static abstract class Extintor implements BaseColumns{

@@ -16,7 +16,10 @@ public class CestMovilDB extends SQLiteOpenHelper {
             + Elemento.TABLE_NAME + "("
             + Elemento.ID + " integer primary key, "
             + Elemento.TIPO + " text not null, "
-            + Elemento.LETRA_BLOQUE + " text not null)";
+            + Elemento.LETRA_BLOQUE + " text not null, "
+            + Elemento.NOMBRE_BLOQUE + " text not null, "
+            + Elemento.PISO + " text not null, "
+            + Elemento.SEDE + " text not null)";
 
     private static final String SQL_CREAR_TABLA_EXTINTOR = "create table if not exists "
             + Extintor.TABLE_NAME +"("
