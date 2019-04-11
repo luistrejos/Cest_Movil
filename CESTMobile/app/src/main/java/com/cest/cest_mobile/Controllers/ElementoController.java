@@ -21,12 +21,15 @@ public class ElementoController {
      * @param tipo Tipo de elemento
      * @param letra_bloque Letra del bloque donde está ubicado el elemento
      */
-    public void Crear (String id, String tipo, String letra_bloque){
+    public void Crear (String id, String tipo, String letra_bloque, String nombre_bloque, String piso, String sede){
         SQLiteDatabase db = this.db.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Elemento.ID, Integer.valueOf(id));
         values.put(Elemento.TIPO, tipo);
         values.put(Elemento.LETRA_BLOQUE, letra_bloque);
+        values.put(Elemento.NOMBRE_BLOQUE, nombre_bloque);
+        values.put(Elemento.PISO, piso);
+        values.put(Elemento.SEDE, sede);
         try{
             db.insert(Elemento.TABLE_NAME, null,values);
         }catch (Exception e){
@@ -42,7 +45,7 @@ public class ElementoController {
      */
     public String[] BuscarId (String id){
         SQLiteDatabase db = this.db.getReadableDatabase();
-        String[] projection = {Elemento.ID, Elemento.TIPO, Elemento.LETRA_BLOQUE};
+        String[] projection = {Elemento.ID, Elemento.TIPO, Elemento.LETRA_BLOQUE, Elemento.NOMBRE_BLOQUE, Elemento.PISO, Elemento.SEDE};
 
         Cursor cursor =
             db.query(Elemento.TABLE_NAME,
