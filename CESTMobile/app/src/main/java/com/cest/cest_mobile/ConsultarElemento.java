@@ -33,8 +33,8 @@ public class ConsultarElemento extends AppCompatActivity {
         btnQR = (Button) findViewById(R.id.btnQR);
         txtId = (EditText) findViewById(R.id.txtId);
         CestMovilDB db = new CestMovilDB(this.getApplicationContext());
-        //db.getWritableDatabase().execSQL("drop table if exists elemento");
-        //db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, letra_bloque text not null, tipo text not null)");
+        db.getWritableDatabase().execSQL("drop table if exists elemento");
+        db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, tipo text not null, letra_bloque text not null, nombre_bloque text not null, piso text not null, sede text not null)");
 
         elmtCtrl = new ElementoController(db);
 
@@ -99,6 +99,9 @@ public class ConsultarElemento extends AppCompatActivity {
             i.putExtra("id",infoElemento[0]);
             i.putExtra("tipo",infoElemento[1]);
             i.putExtra("letra_bloque",infoElemento[2]);
+            i.putExtra("nombre_bloque",infoElemento[3]);
+            i.putExtra("piso",infoElemento[4]);
+            i.putExtra("sede",infoElemento[5]);
             startActivity(i);
         }else{
             Toast.makeText(getApplicationContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();

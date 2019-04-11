@@ -17,6 +17,9 @@ public class InfoElemento extends AppCompatActivity {
     private String id;
     private String tipo;
     private String letra_bloque;
+    private String nombre_bloque;
+    private String piso;
+    private String sede;
     private TextView txtId;
     private TextView txtDescripcion;
     private ImageView imgElemento;
@@ -37,6 +40,10 @@ public class InfoElemento extends AppCompatActivity {
         this.id = getIntent().getStringExtra("id");
         this.tipo = getIntent().getStringExtra("tipo");
         this.letra_bloque = getIntent().getStringExtra("letra_bloque");
+        this.nombre_bloque = getIntent().getStringExtra("nombre_bloque");
+        this.piso = getIntent().getStringExtra("piso");
+        this.sede = getIntent().getStringExtra("sede");
+
 
 
         this.txtId = (TextView) findViewById(R.id.txtIdd);
@@ -46,11 +53,15 @@ public class InfoElemento extends AppCompatActivity {
         if (tipo.equalsIgnoreCase("extintor")){
 
             this.txtDescripcion.setText("Es un "+this.tipo
-                    +" y se encuentra ubicado en el bloque "+this.letra_bloque);
+                    +" y se encuentra ubicado en la Sede "+this.sede
+                    +" Bloque " + this.nombre_bloque + " (" + this.letra_bloque + ")"
+                    + " en el Piso #" + this.piso);
         }
         else if (tipo.equalsIgnoreCase("camilla")){
             this.txtDescripcion.setText("Es una "+this.tipo
-                    +" y se encuentra ubicada en el bloque "+this.letra_bloque);
+                    +" y se encuentra ubicada en la Sede " + this.sede
+                    + " Bloque " + this.nombre_bloque + " (" + this.letra_bloque + ")"
+                    + " en el Piso # " + this.piso);
         }
 
 
