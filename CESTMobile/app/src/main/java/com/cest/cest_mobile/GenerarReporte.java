@@ -6,6 +6,7 @@ import android.os.Debug;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,13 +42,13 @@ public class GenerarReporte extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(GenerarReporte.this);
                 alerta.setMessage("¿Deseas que nos contactemos contigo?")
                         .setCancelable(false)
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(Html.fromHtml("<h1>Si</h1>"), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(Html.fromHtml("<font color='#0040FF'>No</font>"), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
