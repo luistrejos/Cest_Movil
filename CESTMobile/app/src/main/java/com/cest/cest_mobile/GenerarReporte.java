@@ -1,17 +1,15 @@
 package com.cest.cest_mobile;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Debug;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -37,7 +35,7 @@ public class GenerarReporte extends AppCompatActivity {
 
         this.btnEnviarReporte.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 seleccion();
                 AlertDialog.Builder alerta = new AlertDialog.Builder(GenerarReporte.this);
                 alerta.setMessage("¿Deseas que nos contactemos contigo?")
@@ -45,13 +43,18 @@ public class GenerarReporte extends AppCompatActivity {
                         .setPositiveButton(Html.fromHtml("<h1>Si</h1>"), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                finish();
+                                //pegar codigo de ventana correoReportarDano
+                                Intent i = new Intent(GenerarReporte.this,correoDano.class);
+                                startActivity(i);
+                                //finish();
                             }
                         })
                         .setNegativeButton(Html.fromHtml("<font color='#0040FF'>No</font>"), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(v.getContext(),"Reporte generado exitosamente", Toast.LENGTH_LONG).show();
                                 dialog.cancel();
+                                finish();
                             }
                         });
                 AlertDialog titulo = alerta.create();
