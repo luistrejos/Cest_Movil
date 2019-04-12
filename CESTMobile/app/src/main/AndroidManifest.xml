@@ -12,7 +12,9 @@
         <activity android:name=".GenerarReporte"></activity>
         <activity android:name=".InfoElemento" />
         <activity android:name=".ConsultarElemento" />
+        <activity android:name=".ReportarSitio" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
