@@ -33,15 +33,15 @@ public class ConsultarElemento extends AppCompatActivity {
         btnQR = (Button) findViewById(R.id.btnQR);
         txtId = (EditText) findViewById(R.id.txtId);
         CestMovilDB db = new CestMovilDB(this.getApplicationContext());
-        //db.getWritableDatabase().execSQL("drop table if exists elemento");
-        //db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, letra_bloque text not null, tipo text not null)");
+        db.getWritableDatabase().execSQL("drop table if exists elemento");
+        db.getWritableDatabase().execSQL("create table if not exists elemento(id integer primary key, tipo text not null, letra_bloque text not null, nombre_bloque text not null, piso text not null, sede text not null)");
 
         elmtCtrl = new ElementoController(db);
 
-        elmtCtrl.Crear("1","Camilla","A");
-        elmtCtrl.Crear("2","Camilla","B");
-        elmtCtrl.Crear("3","Extintor","C");
-        elmtCtrl.Crear("4","Extintor","D");
+        elmtCtrl.Crear("1","Camilla","A", "Administrativo", "1", "Central");
+        elmtCtrl.Crear("2","Camilla","B","Orlando Cierra","3","Central");
+        elmtCtrl.Crear("3","Extintor","I","Palogrande","2","Palogrande");
+        elmtCtrl.Crear("4","Extintor","G","Ciencias Agropecuarias","3","Sancancio");
 
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +99,9 @@ public class ConsultarElemento extends AppCompatActivity {
             i.putExtra("id",infoElemento[0]);
             i.putExtra("tipo",infoElemento[1]);
             i.putExtra("letra_bloque",infoElemento[2]);
+            i.putExtra("nombre_bloque",infoElemento[3]);
+            i.putExtra("piso",infoElemento[4]);
+            i.putExtra("sede",infoElemento[5]);
             startActivity(i);
         }else{
             Toast.makeText(getApplicationContext(), "El ID no se encuentra registrado", Toast.LENGTH_LONG).show();

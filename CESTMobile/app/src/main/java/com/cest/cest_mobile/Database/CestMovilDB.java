@@ -16,7 +16,10 @@ public class CestMovilDB extends SQLiteOpenHelper {
             + Elemento.TABLE_NAME + "("
             + Elemento.ID + " integer primary key, "
             + Elemento.TIPO + " text not null, "
-            + Elemento.LETRA_BLOQUE + " text not null)";
+            + Elemento.LETRA_BLOQUE + " text not null, "
+            + Elemento.NOMBRE_BLOQUE + " text not null, "
+            + Elemento.PISO + " text not null, "
+            + Elemento.SEDE + " text not null)";
 
     private static final String SQL_CREAR_TABLA_EXTINTOR = "create table if not exists "
             + Extintor.TABLE_NAME +"("
@@ -93,6 +96,7 @@ public class CestMovilDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
+        /*
         db.execSQL(SQL_CREAR_TABLA_PISO);
         db.execSQL(SQL_CREAR_TABLA_BLOQUE);
         db.execSQL(SQL_CREAR_TABLA_SEDE);
@@ -100,11 +104,13 @@ public class CestMovilDB extends SQLiteOpenHelper {
         db.execSQL(SQL_CREAR_TABLA_CAMILLA);
         db.execSQL(SQL_CREAR_TABLA_EXTINTOR);
         db.execSQL(SQL_CREAR_TABLA_FICHATECNICA);
+        */
         db.execSQL(SQL_CREAR_TABLA_ELEMENTO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        /*
         db.execSQL("drop table if exists "+Piso.TABLE_NAME);
         db.execSQL("drop table if exists "+Bloque.TABLE_NAME);
         db.execSQL("drop table if exists "+Sede.TABLE_NAME);
@@ -112,6 +118,7 @@ public class CestMovilDB extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+Camilla.TABLE_NAME);
         db.execSQL("drop table if exists "+FichaTecnica.TABLE_NAME);
         db.execSQL("drop table if exists "+Extintor.TABLE_NAME);
+        */
         db.execSQL("drop table if exists "+Elemento.TABLE_NAME);
         onCreate(db);
     }

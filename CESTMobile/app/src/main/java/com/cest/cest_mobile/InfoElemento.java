@@ -1,9 +1,11 @@
 package com.cest.cest_mobile;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,12 +17,16 @@ public class InfoElemento extends AppCompatActivity {
     private String id;
     private String tipo;
     private String letra_bloque;
+    private String nombre_bloque;
+    private String piso;
+    private String sede;
     private TextView txtId;
     private TextView txtDescripcion;
     private ImageView imgElemento;
     private Button btnUbicado;
     private Button btnUso;
     private Button btnDano;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -34,6 +40,10 @@ public class InfoElemento extends AppCompatActivity {
         this.id = getIntent().getStringExtra("id");
         this.tipo = getIntent().getStringExtra("tipo");
         this.letra_bloque = getIntent().getStringExtra("letra_bloque");
+        this.nombre_bloque = getIntent().getStringExtra("nombre_bloque");
+        this.piso = getIntent().getStringExtra("piso");
+        this.sede = getIntent().getStringExtra("sede");
+
 
 
         this.txtId = (TextView) findViewById(R.id.txtIdd);
@@ -43,11 +53,15 @@ public class InfoElemento extends AppCompatActivity {
         if (tipo.equalsIgnoreCase("extintor")){
 
             this.txtDescripcion.setText("Es un "+this.tipo
-                    +" y se encuentra ubicado en el bloque "+this.letra_bloque);
+                    +" y se encuentra ubicado en la Sede "+this.sede
+                    +" Bloque " + this.nombre_bloque + " (" + this.letra_bloque + ")"
+                    + " en el Piso #" + this.piso);
         }
         else if (tipo.equalsIgnoreCase("camilla")){
             this.txtDescripcion.setText("Es una "+this.tipo
-                    +" y se encuentra ubicada en el bloque "+this.letra_bloque);
+                    +" y se encuentra ubicada en la Sede " + this.sede
+                    + " Bloque " + this.nombre_bloque + " (" + this.letra_bloque + ")"
+                    + " en el Piso # " + this.piso);
         }
 
 
@@ -66,6 +80,14 @@ public class InfoElemento extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createSimpleDialog(v);
+            }
+        });
+        this.btnDano.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("APP","Generar Reporte");
+                Intent i = new Intent(InfoElemento.this,GenerarReporte.class);
+                startActivity(i);
             }
         });
     }
@@ -93,4 +115,6 @@ public class InfoElemento extends AppCompatActivity {
 
         return builder.create();
     }
+
+
 }
