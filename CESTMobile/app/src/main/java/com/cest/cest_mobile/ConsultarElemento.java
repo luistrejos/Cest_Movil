@@ -39,9 +39,10 @@ public class ConsultarElemento extends AppCompatActivity {
         elmtCtrl = new ElementoController(db);
 
         elmtCtrl.Crear("1","Camilla","A", "Administrativo", "1", "Central");
-        elmtCtrl.Crear("2","Camilla","B","Orlando Cierra","3","Central");
+        elmtCtrl.Crear("2","Camilla","B","Orlando Sierra","3","Central");
         elmtCtrl.Crear("3","Extintor","I","Palogrande","2","Palogrande");
         elmtCtrl.Crear("4","Extintor","G","Ciencias Agropecuarias","3","Sancancio");
+        elmtCtrl.Crear("1013","Extintor","B","Orlando Sierra","1","Central");
 
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override

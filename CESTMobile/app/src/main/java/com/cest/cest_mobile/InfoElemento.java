@@ -79,9 +79,11 @@ public class InfoElemento extends AppCompatActivity {
         this.btnUbicado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createSimpleDialog(v);
+                Intent i = new Intent(InfoElemento.this,ReportarSitio.class);
+                startActivity(i);
             }
         });
+
         this.btnDano.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +117,14 @@ public class InfoElemento extends AppCompatActivity {
 
         return builder.create();
     }
+
+   // public void confirmarUbicacion(View view){
+       // AlertDialog.Builder mbuilder = new AlertDialog.Builder(this);
+      //  View v = getLayoutInflater().inflate(R.layout.reportar_sitio,null);
+
+    //}
+
+
 
 
 }

@@ -15,31 +15,18 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/boton_redondo"
         android:gravity="center"
-        android:text="¿El  elemento se encuentra en el sitio?"
+        android:text="Informacion de contacto"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:foreground="@color/zxing_transparent"
-        android:hint="E-Mail"
-        android:inputType="textEmailAddress"
-        android:text="¿Deseas que te contactemos?" />
 
     <EditText
         android:id="@+id/txtCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Ingresa tu email (Opcional)"
+        android:hint="Ingresa tu email"
         android:inputType="textPersonName" />
 
     <LinearLayout
@@ -52,14 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Si" />
+            android:text="Aceptar" />
 
-        <Button
-            android:id="@+id/btnNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="No" />
     </LinearLayout>
 
 </LinearLayout>
