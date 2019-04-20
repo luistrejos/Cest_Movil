@@ -101,7 +101,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="460dp"
         android:background="@drawable/boton_redondo"
-        android:onClick="confirmarUbicacion"
         android:padding="5dp"
         android:text="¿Se encuentra en el sitio indicado?"
         android:textColor="@android:color/background_light" />

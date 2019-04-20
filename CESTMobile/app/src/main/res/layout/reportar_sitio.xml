@@ -45,7 +45,7 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Ingresa tu email (Opcional)"
-        android:inputType="textPersonName" />
+        android:inputType="textEmailAddress" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnSi"
+            android:id="@+id/btnYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -64,7 +64,7 @@
 
 
         <Button
-            android:id="@+id/btnNo"
+            android:id="@+id/btnNot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

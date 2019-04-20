@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,7 +73,6 @@ public class InfoElemento extends AppCompatActivity {
                     + " en el Piso # " + this.piso);
         }
 
-
         this.imgElemento = (ImageView) findViewById(R.id.imgElemento);
         if(this.tipo.equalsIgnoreCase("extintor")){
             this.imgElemento.setImageResource(R.drawable.extintor);
@@ -89,15 +89,25 @@ public class InfoElemento extends AppCompatActivity {
             public void onClick(View v) {
                 dialogo.setContentView(R.layout.reportar_sitio);
                 dialogo.dismiss();
-               // Intent i = new Intent(InfoElemento.this,ReportarSitio.class);
-                //startActivity(i);
                 dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialogo.show();
+
+                Button btnSi=(Button) dialogo.findViewById(R.id.btnYes);
+                Button btnNo = (Button) dialogo.findViewById(R.id.btnNot);
+                btnSi.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(v.getContext(),"Si sirve", Toast.LENGTH_LONG).show();
+                    }
+                });
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(v.getContext(),"No sirve", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
-
-
-
 
         this.btnDano.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,29 +117,7 @@ public class InfoElemento extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 
-    public AlertDialog createSimpleDialog(View v) {
-        Toast.makeText(v.getContext(),"Alert", Toast.LENGTH_LONG).show();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("Titulo")
-                .setMessage("El Mensaje para el usuario")
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //listener.onPossitiveButtonClick();
-                            }
-                        })
-                .setNegativeButton("CANCELAR",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //listener.onNegativeButtonClick();
-                            }
-                        });
-
-        return builder.create();
-    }
 }
