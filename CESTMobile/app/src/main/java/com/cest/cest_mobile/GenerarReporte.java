@@ -74,7 +74,7 @@ public class GenerarReporte extends AppCompatActivity {
                                     Toast.makeText(v.getContext(), "Se genero reporte exitosamente, nos pondremos en contacto con : " + correoaux, Toast.LENGTH_LONG).show();
                                     GenerarReporte.super.onBackPressed();
                                 } else {
-                                    Toast.makeText(v.getContext(), "Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(v.getContext(), "Si deseas que nos contactemos debe ser un correo válido", Toast.LENGTH_LONG).show();
                                 }
                             }
                             else{

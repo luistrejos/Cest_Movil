@@ -118,7 +118,7 @@ public class InfoElemento extends AppCompatActivity {
                                 dialogo.dismiss();
                             }
                             else{
-                                Toast.makeText(v.getContext(),"Si deseas ser contactado el correo debe ser valido", Toast.LENGTH_LONG).show();
+                                Toast.makeText(v.getContext(),"Si deseas ser contactado el correo debe ser válido", Toast.LENGTH_LONG).show();
                             }
                         }
                     }
