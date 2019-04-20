@@ -3,7 +3,7 @@
     android:layout_width="350dp"
     android:layout_height="300dp"
     android:layout_gravity="center"
-    android:background="@android:color/darker_gray"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     android:padding="5dp"
     >
@@ -19,6 +19,7 @@
         android:gravity="center"
         android:text="Reporte enviado exitosamente"
         android:textAllCaps="false"
+        android:background="@drawable/boton_redondo"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -30,7 +31,6 @@
         android:text="¿Deseas que te contactemos?  deja tú correo"
         android:textSize="16sp"
         android:layout_marginBottom="15dp"
-        android:textColor="@color/colorAccent"
         />
 
     <EditText
@@ -54,7 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ok" />
+            android:text="Ok"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 
