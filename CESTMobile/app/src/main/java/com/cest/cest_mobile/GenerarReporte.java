@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,19 +63,23 @@ public class GenerarReporte extends AppCompatActivity {
                     reporteDaño.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     reporteDaño.show();
                     Button btn = (Button) reporteDaño.findViewById(R.id.btnOk);
-
+                    final EditText correo = (EditText) reporteDaño.findViewById(R.id.txtCorreo);
                     btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            GenerarReporte.super.onBackPressed();
+                            String correoaux = correo.getText().toString();
+                            if (correoaux.contains("@")) {
+                                GenerarReporte.super.onBackPressed();
+                            }
+                            else{
+                                Toast.makeText(v.getContext(),"Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
-
                 }
             }
         });
     }
-
 
     public LinkedList<String> seleccion(){
 
