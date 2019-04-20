@@ -35,7 +35,6 @@
         android:foreground="@color/zxing_transparent"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
-        android:text="Ingresa el correo: (si deseas que nos contactemos)"
         android:textSize="18sp" />
 
     <EditText
