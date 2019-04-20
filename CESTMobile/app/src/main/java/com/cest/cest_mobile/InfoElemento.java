@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -112,7 +113,7 @@ public class InfoElemento extends AppCompatActivity {
                             dialogo.dismiss();
                         }
                         else if ( !correoaux.isEmpty() ){
-                            if ( correoaux.contains("@") ){
+                            if (Patterns.EMAIL_ADDRESS.matcher(correoaux).matches()) ){
                                 Toast.makeText(v.getContext(),"El reporte se guardado exitosamente, nos pondremos en contacto :" + correoaux, Toast.LENGTH_LONG).show();
                                 dialogo.dismiss();
                             }
