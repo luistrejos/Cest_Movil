@@ -1,7 +1,10 @@
 package com.cest.cest_mobile;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,9 +30,14 @@ public class InfoElemento extends AppCompatActivity {
     private Button btnUso;
     private Button btnDano;
 
+    Dialog dialogo;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
+        dialogo = new Dialog(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_elemento);
 
@@ -79,10 +87,17 @@ public class InfoElemento extends AppCompatActivity {
         this.btnUbicado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(InfoElemento.this,ReportarSitio.class);
-                startActivity(i);
+                dialogo.setContentView(R.layout.reportar_sitio);
+                dialogo.dismiss();
+               // Intent i = new Intent(InfoElemento.this,ReportarSitio.class);
+                //startActivity(i);
+                dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialogo.show();
             }
         });
+
+
+
 
         this.btnDano.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,14 +132,4 @@ public class InfoElemento extends AppCompatActivity {
 
         return builder.create();
     }
-
-   // public void confirmarUbicacion(View view){
-       // AlertDialog.Builder mbuilder = new AlertDialog.Builder(this);
-      //  View v = getLayoutInflater().inflate(R.layout.reportar_sitio,null);
-
-    //}
-
-
-
-
 }
