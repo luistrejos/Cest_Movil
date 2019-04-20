@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".correoDano"></activity>
-        <activity android:name=".AlertaCorreo" />
         <activity android:name=".GenerarReporte" />
         <activity android:name=".InfoElemento" />
         <activity android:name=".ConsultarElemento" />
