@@ -80,8 +80,7 @@ public class GenerarReporte extends AppCompatActivity {
                         }
                     });
                 }
-            }
-        });
+            }});
     }
 
     public LinkedList<String> seleccion(){

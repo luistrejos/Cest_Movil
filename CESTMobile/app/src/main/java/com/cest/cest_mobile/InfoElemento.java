@@ -94,16 +94,33 @@ public class InfoElemento extends AppCompatActivity {
 
                 Button btnSi=(Button) dialogo.findViewById(R.id.btnYes);
                 Button btnNo = (Button) dialogo.findViewById(R.id.btnNot);
+                final EditText correoSitio = (EditText) dialogo.findViewById(R.id.txtCorreoSitio);
+
                 btnSi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(v.getContext(),"Si sirve", Toast.LENGTH_LONG).show();
+                        Toast.makeText(v.getContext(),"Si se encuantra en la ubicación", Toast.LENGTH_LONG).show();
                     }
                 });
                 btnNo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(v.getContext(),"No sirve", Toast.LENGTH_LONG).show();
+                        String correoaux = correoSitio.getText().toString();
+
+                        if ( correoaux.isEmpty() ){
+                            Toast.makeText(v.getContext(),"El reporte se guardado exitosamente", Toast.LENGTH_LONG).show();
+                            dialogo.dismiss();
+                        }
+                        else if ( !correoaux.isEmpty() ){
+                            if ( correoaux.contains("@") ){
+                                Toast.makeText(v.getContext(),"El reporte se guardado exitosamente, nos pondremos en contacto :" + correoaux, Toast.LENGTH_LONG).show();
+                                dialogo.dismiss();
+                            }
+                            else{
+                                Toast.makeText(v.getContext(),"Si deseas ser contactado el correo debe ser valido", Toast.LENGTH_LONG).show();
+                                dialogo.dismiss();
+                            }
+                        }
                     }
                 });
             }
