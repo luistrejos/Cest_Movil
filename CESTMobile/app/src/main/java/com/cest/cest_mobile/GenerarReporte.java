@@ -1,6 +1,7 @@
 package com.cest.cest_mobile;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ public class GenerarReporte extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(GenerarReporte.this);
                 alerta.setMessage("¿Deseas que nos contactemos contigo?")
                         .setCancelable(false)
-                        .setPositiveButton(Html.fromHtml("<h1>Si</h1>"), new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //pegar codigo de ventana correoReportarDano
