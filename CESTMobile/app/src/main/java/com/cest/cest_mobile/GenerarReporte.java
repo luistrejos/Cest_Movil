@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -69,7 +70,7 @@ public class GenerarReporte extends AppCompatActivity {
                         public void onClick(View v) {
                             String correoaux = correo.getText().toString();
                             if (!correoaux.isEmpty()) {
-                                if (!correoaux.contains("@")) {
+                                if (Patterns.EMAIL_ADDRESS.matcher(correoaux).matches()) {
                                     GenerarReporte.super.onBackPressed();
                                 } else {
                                     Toast.makeText(v.getContext(), "Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
