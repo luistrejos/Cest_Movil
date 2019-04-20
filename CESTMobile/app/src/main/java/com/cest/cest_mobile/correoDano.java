@@ -15,18 +15,21 @@ public class correoDano extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_correo_dano);
-        btnSi=(Button) findViewById(R.id.btnSi);
+        btnSi=(Button) findViewById(R.id.btnYes);
         txtCorreo=(EditText) findViewById(R.id.txtCorreo);
 
 
         this.btnSi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"Información enviada exitosamente", Toast.LENGTH_LONG).show();
-                correoDano.super.onBackPressed();
+                Toast.makeText(v.getContext(),"hsakjdsad", Toast.LENGTH_LONG).show();
 
             }
         });
 
+    }
+
+    public  void mensaje(){
+        Toast.makeText(this,"Información enviada exitosamente", Toast.LENGTH_LONG).show();
     }
 }

@@ -17,23 +17,19 @@ import com.google.zxing.integration.android.IntentIntegrator;
 
 public class ReportarSitio extends AppCompatActivity {
 
-
     Button btnSi;
     Button btnNo;
     EditText txtCorreo;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reportar_sitio);
-        btnSi=(Button) findViewById(R.id.btnSi);
-        btnNo=(Button) findViewById(R.id.btnNo);
+        btnSi=(Button) findViewById(R.id.btnYes);
+        btnNo=(Button) findViewById(R.id.btnNot);
         txtCorreo=(EditText) findViewById(R.id.txtCorreo);
 
-
+        Toast.makeText(this,"reportando sitio", Toast.LENGTH_LONG).show();
         this.btnSi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
