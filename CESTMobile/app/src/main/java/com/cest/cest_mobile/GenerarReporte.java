@@ -71,13 +71,16 @@ public class GenerarReporte extends AppCompatActivity {
                             String correoaux = correo.getText().toString();
                             if (!correoaux.isEmpty()) {
                                 if (Patterns.EMAIL_ADDRESS.matcher(correoaux).matches()) {
+                                    Toast.makeText(v.getContext(), "Se genero reporte exitosamente, nos pondremos en contacto con : " + correoaux, Toast.LENGTH_LONG).show();
                                     GenerarReporte.super.onBackPressed();
                                 } else {
                                     Toast.makeText(v.getContext(), "Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
                                 }
                             }
+                            else{
+                            Toast.makeText(v.getContext(), "Se genero reporte exitosamente", Toast.LENGTH_LONG).show();
                             GenerarReporte.super.onBackPressed();
-                        }
+                        }}
                     });
                 }
             }});

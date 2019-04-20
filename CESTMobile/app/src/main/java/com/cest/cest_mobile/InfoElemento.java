@@ -112,14 +112,13 @@ public class InfoElemento extends AppCompatActivity {
                             Toast.makeText(v.getContext(),"El reporte se guardado exitosamente", Toast.LENGTH_LONG).show();
                             dialogo.dismiss();
                         }
-                        else if ( !correoaux.isEmpty() ){
+                        else{
                             if (Patterns.EMAIL_ADDRESS.matcher(correoaux).matches()){
                                 Toast.makeText(v.getContext(),"El reporte se guardado exitosamente, nos pondremos en contacto :" + correoaux, Toast.LENGTH_LONG).show();
                                 dialogo.dismiss();
                             }
                             else{
                                 Toast.makeText(v.getContext(),"Si deseas ser contactado el correo debe ser valido", Toast.LENGTH_LONG).show();
-
                             }
                         }
                     }
