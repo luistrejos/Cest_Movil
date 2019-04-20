@@ -35,6 +35,7 @@
         android:foreground="@color/zxing_transparent"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
+        android:text="holaaaaaa"
         android:textSize="18sp" />
 
     <EditText
