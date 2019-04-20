@@ -9,30 +9,23 @@ import android.widget.Toast;
 
 public class correoReportarDano extends AppCompatActivity {
 
-
-    Button btnSi;
+    Button btnOk;
     EditText txtCorreo;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_correo_dano);
-        btnSi=(Button) findViewById(R.id.btnSi);
+        btnOk=(Button) findViewById(R.id.btnOk);
         txtCorreo=(EditText) findViewById(R.id.txtCorreo);
 
 
-        this.btnSi.setOnClickListener(new View.OnClickListener() {
+        this.btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),"Información enviada exitosamente", Toast.LENGTH_LONG).show();
-                correoReportarDano.super.onBackPressed();
-
+                //correoReportarDano.super.onBackPressed();
             }
         });
-
     }
-
 }

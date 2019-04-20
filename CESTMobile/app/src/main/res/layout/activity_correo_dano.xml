@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@android:color/darker_gray"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
+    android:padding="5dp"
+    >
 
     <TextView
         android:id="@+id/txt_titulo"
@@ -12,34 +15,46 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/boton_redondo"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="Informacion de contacto"
+        android:text="Reporte enviado exitosamente"
         android:textAllCaps="false"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="¿Deseas que te contactemos?  deja tú correo"
+        android:textSize="16sp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/colorAccent"
+        />
 
     <EditText
         android:id="@+id/txtCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Ingresa tu email"
-        android:inputType="textPersonName" />
+        android:layout_marginBottom="20dp"
+        android:hint="Email (opcional)"
+        android:inputType="textPersonName"
+
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
 
         <Button
-            android:id="@+id/btnSi"
+            android:id="@+id/btnOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Aceptar" />
+            android:text="Ok" />
 
     </LinearLayout>
 

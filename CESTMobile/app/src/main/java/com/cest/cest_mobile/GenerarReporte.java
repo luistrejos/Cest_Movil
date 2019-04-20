@@ -1,6 +1,9 @@
 package com.cest.cest_mobile;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +26,15 @@ public class GenerarReporte extends AppCompatActivity {
     private CheckBox ckbAlmoadilla;
     private Button btnEnviarReporte;
 
+    Dialog reporteDaño;
+
+    LinkedList <String> listaSeleccion = new LinkedList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        reporteDaño = new Dialog(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reportar_dano);
         ckbVencido = (CheckBox)findViewById(R.id.ckbVencido);
@@ -37,7 +47,19 @@ public class GenerarReporte extends AppCompatActivity {
         this.btnEnviarReporte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+
                 seleccion();
+                if ( listaSeleccion.isEmpty() ){
+                    Toast.makeText(v.getContext(),"No hay ningun daño seleccionado", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    reporteDaño.setContentView(R.layout.activity_correo_dano);
+                    reporteDaño.dismiss();
+                    reporteDaño.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    reporteDaño.show();
+                }
+                /*
                 AlertDialog.Builder alerta = new AlertDialog.Builder(GenerarReporte.this);
                 alerta.setMessage("¿Deseas que nos contactemos contigo?")
                         .setCancelable(false)
@@ -61,11 +83,13 @@ public class GenerarReporte extends AppCompatActivity {
                 AlertDialog titulo = alerta.create();
                 titulo.setTitle("Queremos saber mas de ti");
                 titulo.show();
+                */
+
             }
         });
     }
     public LinkedList<String> seleccion(){
-        LinkedList <String> listaSeleccion = new LinkedList<>();
+
         if (ckbVencido.isChecked()==true){
             listaSeleccion.add("Vencido");
         }
