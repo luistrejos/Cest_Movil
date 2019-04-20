@@ -35,7 +35,7 @@
         android:foreground="@color/zxing_transparent"
         android:inputType="textEmailAddress"
         android:text="¿Deseas que te contactemos?  deja tú correo"
-        android:textSize="16sp" />
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/txtCorreoSitio"
