@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.LinkedList;
@@ -30,6 +32,8 @@ public class GenerarReporte extends AppCompatActivity {
 
     LinkedList <String> listaSeleccion = new LinkedList<>();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,10 +48,11 @@ public class GenerarReporte extends AppCompatActivity {
         ckbAlmoadilla = (CheckBox)findViewById(R.id.ckbSAlmoadilla);
         btnEnviarReporte = (Button) findViewById(R.id.btnEnviarReporte);
 
+
         this.btnEnviarReporte.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(final View v) {
-
                 seleccion();
                 if ( listaSeleccion.isEmpty() ){
                     Toast.makeText(v.getContext(),"No hay ningun daño seleccionado", Toast.LENGTH_LONG).show();
@@ -57,37 +62,25 @@ public class GenerarReporte extends AppCompatActivity {
                     reporteDaño.dismiss();
                     reporteDaño.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     reporteDaño.show();
-
+                    Button btn = (Button) reporteDaño.findViewById(R.id.btnOk);
+                    final EditText correo = (EditText) reporteDaño.findViewById(R.id.txtCorreo);
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String correoaux = correo.getText().toString();
+                            if (correoaux.contains("@")) {
+                                GenerarReporte.super.onBackPressed();
+                            }
+                            else{
+                                Toast.makeText(v.getContext(),"Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
                 }
-                /*
-                AlertDialog.Builder alerta = new AlertDialog.Builder(GenerarReporte.this);
-                alerta.setMessage("¿Deseas que nos contactemos contigo?")
-                        .setCancelable(false)
-                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //pegar codigo de ventana correoReportarDano
-                                Intent i = new Intent(GenerarReporte.this,correoDano.class);
-                                startActivity(i);
-                                //finish();
-                            }
-                        })
-                        .setNegativeButton(Html.fromHtml("<font color='#0040FF'>No</font>"), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(v.getContext(),"Reporte generado exitosamente", Toast.LENGTH_LONG).show();
-                                dialog.cancel();
-                                finish();
-                            }
-                        });
-                AlertDialog titulo = alerta.create();
-                titulo.setTitle("Queremos saber mas de ti");
-                titulo.show();
-                */
-
             }
         });
     }
+
     public LinkedList<String> seleccion(){
 
         if (ckbVencido.isChecked()==true){
