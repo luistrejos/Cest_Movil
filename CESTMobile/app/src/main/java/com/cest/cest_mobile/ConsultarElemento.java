@@ -47,16 +47,29 @@ public class ConsultarElemento extends AppCompatActivity {
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!txtId.getText().toString().isEmpty()){
-                    String id = txtId.getText().toString();
-                    Log.i("APP: ",id);
-                    if(id.length() < 6){
-                        //Llamar a elemento controller
-                        BuscarElemento(id);
-                    }else{
-                        Toast.makeText(v.getContext(), "El ID tiene más de 5 dígitos", Toast.LENGTH_LONG).show();
-                    }
-                }else{
+
+                if (!txtId.getText().toString().isEmpty()) {
+                    try {
+
+                        int aux = Integer.parseInt(txtId.getText().toString());
+
+                        String id = txtId.getText().toString();
+
+                        Log.i("APP: ", id);
+                        if (id.length() < 6) {
+                            //Llamar a elemento controller
+                            BuscarElemento(id);
+                        } else {
+                            Toast.makeText(v.getContext(), "El ID tiene más de 5 dígitos", Toast.LENGTH_LONG).show();
+                        }
+
+
+                }catch(NumberFormatException ee){
+
+                    Toast.makeText(v.getContext(), "El campo ID debe ser númerico", Toast.LENGTH_LONG).show();
+
+                }
+            }else {
                     Toast.makeText(v.getContext(), "El campo ID no puede estar vacío", Toast.LENGTH_LONG).show();
                 }
             }
