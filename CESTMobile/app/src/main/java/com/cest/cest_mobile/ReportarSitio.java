@@ -43,13 +43,18 @@ public class ReportarSitio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String correo=txtCorreo.getText().toString();
+                if (correo.contains("@")){
+                    if(correo.isEmpty()){
+                        Toast.makeText(v.getContext(),"El Reporte ha sido Guardado", Toast.LENGTH_LONG).show();
+                        ReportarSitio.super.onBackPressed();
+                    }else {
+                        Toast.makeText(v.getContext(), "Reporte Guardado,  nos pondremos en contacto: " + correo, Toast.LENGTH_LONG).show();
+                        ReportarSitio.super.onBackPressed();
+                    }
+                }else{
+                    Toast.makeText(v.getContext(), "Si desea que nos contactemos, el correo debe ser valido", Toast.LENGTH_LONG).show();
+                    ReportarSitio.super.onBackPressed();
 
-                if(correo.isEmpty()){
-                    Toast.makeText(v.getContext(),"El Reporte ha sido Guardado", Toast.LENGTH_LONG).show();
-                    ReportarSitio.super.onBackPressed();
-                }else {
-                    Toast.makeText(v.getContext(), "Reporte Guardado,  nos pondremos en contacto: " + correo, Toast.LENGTH_LONG).show();
-                    ReportarSitio.super.onBackPressed();
                 }
             }
         });

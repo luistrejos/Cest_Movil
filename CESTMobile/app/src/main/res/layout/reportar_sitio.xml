@@ -33,10 +33,9 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:foreground="@color/zxing_transparent"
-        android:hint="E-Mail"
         android:inputType="textEmailAddress"
-        android:text="¿Deseas que te contactemos?"
-        android:textSize="18sp" />
+        android:text="¿Deseas que te contactemos?  deja tú correo"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/txtCorreo"

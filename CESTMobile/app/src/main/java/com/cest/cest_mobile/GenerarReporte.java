@@ -68,12 +68,14 @@ public class GenerarReporte extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             String correoaux = correo.getText().toString();
-                            if (correoaux.contains("@")) {
-                                GenerarReporte.super.onBackPressed();
+                            if (!correoaux.isEmpty()) {
+                                if (!correoaux.contains("@")) {
+                                    GenerarReporte.super.onBackPressed();
+                                } else {
+                                    Toast.makeText(v.getContext(), "Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
+                                }
                             }
-                            else{
-                                Toast.makeText(v.getContext(),"Si deseas que nos contactemos debe ser un correo valido", Toast.LENGTH_LONG).show();
-                            }
+                            GenerarReporte.super.onBackPressed();
                         }
                     });
                 }
