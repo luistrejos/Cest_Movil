@@ -3,7 +3,7 @@
     android:layout_width="350dp"
     android:layout_height="350dp"
     android:layout_gravity="center"
-    android:background="@android:color/darker_gray"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     android:padding="5dp"
     >
@@ -17,6 +17,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
+        android:background="@drawable/boton_redondo"
         android:text="¿El  elemento se encuentra en el sitio?"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
@@ -35,7 +36,6 @@
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:text="¿Deseas que te contactemos?"
-        android:textColor="@color/colorAccent"
         android:textSize="18sp" />
 
     <EditText
@@ -57,14 +57,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Si" />
+            android:text="Si"
+            android:layout_marginRight="9dp"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"/>
+
 
         <Button
             android:id="@+id/btnNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="No" />
+            android:background="@color/colorPrimaryDark"
+            android:text="No"
+            android:textColor="@color/colorAccent"/>/>
     </LinearLayout>
 
 
